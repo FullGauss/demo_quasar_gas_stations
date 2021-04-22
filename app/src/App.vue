@@ -90,7 +90,7 @@ export default {
   components: {
     HelloWorld
   },
-
+  
   data () {
     return {
       leftDrawerOpen: false
