@@ -1,11 +1,25 @@
 <template>
     <div class="q-pa-md row">
-    <q-table
-      title="Список операций"
-      :data="safeRefuelingOperations"
-      :columns="columns"
-      row-key="name"
-    />
+    <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+    >
+        <div v-if="stateRefuelingOperations" class="col-12">
+            <q-table
+                title="Список операций"
+                :data="safeRefuelingOperations"
+                :columns="columns"
+                row-key="name"
+            />
+        </div>
+    </transition>
+    <q-inner-loading :showing="!stateRefuelingOperations">
+        <q-spinner
+            color="primary"
+            size="3em"
+        />
+    </q-inner-loading>
     </div>
 </template>
 

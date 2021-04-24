@@ -34,12 +34,22 @@
         </q-item>
         <q-item to="/gas-stations" clickable tag="a" exact>
           <q-item-section>
-            <q-item-label>Заправки</q-item-label>
+            <q-item-label>Автозаправки</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item to="/car-info" clickable tag="a" exact>
+        <q-item to="/cars-info" clickable tag="a" exact>
           <q-item-section>
             <q-item-label>Автомобили</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item to="/gas-stations/create" clickable tag="a" exact>
+          <q-item-section>
+            <q-item-label>Добавить автозаправку</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item to="/cars-info/create" clickable tag="a" exact>
+          <q-item-section>
+            <q-item-label>Добавить автомобиль</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
