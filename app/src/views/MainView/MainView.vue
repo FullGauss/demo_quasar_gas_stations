@@ -5,17 +5,20 @@
         </div>
         <GasStationsPanel />
         <CarsInfoPanel />
+        <RefuelingOperationsPanel />
     </div>
 </template>
 
 <script>
 import GasStationsPanel from "@/components/gasStationsPanel";
 import CarsInfoPanel from "@/components/carsInfoPanel";
+import RefuelingOperationsPanel from "@/components/refuelingOperations";
 
 export default {
     components: {
         GasStationsPanel,
-        CarsInfoPanel
+        CarsInfoPanel,
+        RefuelingOperationsPanel
     },
 }
 </script>

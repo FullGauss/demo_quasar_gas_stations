@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import gasStationsModule from "./modules/gasStationsModule";
 import carsInfoModule from "./modules/carsInfoModule";
+import refuelingOperationsModule from "./modules/refuelingOperationsModule";
 
 Vue.use(Vuex);
 
@@ -21,6 +22,7 @@ export default new Vuex.Store({
 
     modules: {
         GAS_STATIONS_MODULE: gasStationsModule,
-        CARS_INFO_MODULE: carsInfoModule
+        CARS_INFO_MODULE: carsInfoModule,
+        REFUELING_OPERATIONS_MODULE: refuelingOperationsModule
     }
 });
