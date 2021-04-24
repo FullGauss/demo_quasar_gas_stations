@@ -18,8 +18,8 @@ export default {
     actions: {
         async GET_CAR_INFO({ commit }) {
             try {
-                const getCarsInfoInstance = getCarsInfo();
-                commit("SET_CARS_INFO", getCarsInfoInstance);
+                const getCarsInfoInstance = await getCarsInfo();
+                commit("SET_CARS_INFO", getCarsInfoInstance.data.data);
 
             } catch (error){
                 console.log(error);

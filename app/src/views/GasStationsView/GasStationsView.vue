@@ -1,22 +1,19 @@
 <template>
     <div>
         <div class="q-pa-md row">
-            <div class="text-h5">Главная</div>
+            <div class="text-h5">Информация о заправках</div>
         </div>
         <GasStationsPanel />
-        <CarsInfoPanel />
     </div>
 </template>
 
 <script>
 import GasStationsPanel from "@/components/gasStationsPanel";
-import CarsInfoPanel from "@/components/carsInfoPanel";
 
 export default {
     components: {
         GasStationsPanel,
-        CarsInfoPanel
     },
 }
 </script>
-<style lang="scss" src="./MainView.scss"></style>
+<style lang="scss" src="./GasStationsView.scss"></style>

@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Gas Stations App
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -25,6 +25,24 @@
       bordered
       content-class="bg-grey-2"
     >
+      <q-list>
+        <q-item-label header>Меню</q-item-label>
+        <q-item to="/" clickable tag="a" exact>
+          <q-item-section>
+            <q-item-label>Главная</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item to="/gas-stations" clickable tag="a" exact>
+          <q-item-section>
+            <q-item-label>Заправки</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item to="/car-info" clickable tag="a" exact>
+          <q-item-section>
+            <q-item-label>Автомобили</q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-list>
     </q-drawer>
 
     <q-page-container>
@@ -34,8 +52,6 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-
 export default {
   name: 'LayoutDefault',
   data () {
@@ -43,14 +59,7 @@ export default {
       leftDrawerOpen: false
     }
   },
-  methods: {
-    ...mapActions({
-      GET_CAR_INFO: "CARS_INFO_MODULE/GET_CAR_INFO",
-    }),
-  },
-  mounted() {
-    this.GET_CAR_INFO();
-  }
+ 
 }
 </script>
 
