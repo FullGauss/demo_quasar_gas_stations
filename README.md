@@ -44,7 +44,7 @@ npm run migrate up
 cd app
 ```
 В `.env` файле нужно прописать адрес API
-переменная **VUE_APP_API_URL** - по умолчанию *http://localhost:3000/api/*
+в переменную **VUE_APP_API_URL** - по умолчанию `localhost:3000/api/`
 
 Затем нужно установить зависимости
 ```sh
