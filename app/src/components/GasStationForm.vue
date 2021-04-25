@@ -2,11 +2,28 @@
     <div class="q-pa-md row">
     <q-card class="my-card col-12">
         <q-card-section>
-            <div class="q-gutter-md">
-                 <q-input outlined v-model="localGasStationData.name" label="Название" />
-                 <q-input outlined v-model="localGasStationData.address" label="Адрес" />
-                 <q-btn color="white" text-color="black" :label="crudName" @click="buttonEvent"/>
-            </div>
+            <q-form
+                @submit="onSubmit"
+                class="q-gutter-md"
+            >
+                <q-input 
+                    outlined 
+                    v-model="localGasStationData.name"
+                    label="Название"
+                    lazy-rules
+                    :rules="[ val => val && val.length > 0 || 'Пожалуйста, заполните название']"
+                />
+                <q-input 
+                    outlined 
+                    v-model="localGasStationData.address"
+                    label="Адрес"
+                    lazy-rules
+                    :rules="[ val => val && val.length > 0 || 'Пожалуйста, заполните адрес']"
+                />
+                <div>
+                    <q-btn :label="crudName" type="submit" color="primary"/>
+                </div>
+            </q-form>
         </q-card-section>
     </q-card>
     </div>
@@ -49,10 +66,9 @@ export default {
         }
     },
     methods: {
-        buttonEvent(){
-            console.log("Click");
-            this.$emit('buttonEventHandler')
-        }
+        onSubmit(){
+            this.$emit('submitEventHandler')
+        },
     },
 }
 </script>

@@ -1,4 +1,5 @@
-import { getGasStations, getGasStation } from "@/services/gasStationsServices";
+import { getGasStations, getGasStation, createGasStation, updateGasStation } from "@/services/gasStationsServices";
+import router from "../../router/index";
 
 export default {
     namespaced: true,
@@ -32,13 +33,39 @@ export default {
                 console.log(error);
             }
         },
-        async GET_GAS_STATION_BY_ID({ commit },  data) {
+        async GET_GAS_STATION_BY_ID({ commit }, data) {
             try {
                 const getGasStationInstance = getGasStation();
 
                 const response = await getGasStationInstance.execute(data);
-                const getGasStationsResult = response.data.data;
-                commit("SET_CURRENT_GAS_STATION", getGasStationsResult);
+                const getGasStationResult = response.data.data;
+                commit("SET_CURRENT_GAS_STATION", getGasStationResult);
+
+            } catch (error){
+                console.log(error);
+            }
+        },
+        async CREATE_GAS_STATION({ commit }, data) {
+            try {
+                const createGasStationInstance = createGasStation();
+
+                const response = await createGasStationInstance.execute(data);
+                const createGasStationResult = response.data.data;
+                commit("SET_CURRENT_GAS_STATION", createGasStationResult);
+                router.push({ name: "UpdateGasStationView", params: { id: createGasStationResult.id } });
+
+            } catch (error){
+                console.log(error);
+            }
+        },
+        async UPDATE_GAS_STATION({ commit }, data) {
+            try {
+                const updateGasStationInstance = updateGasStation();
+
+                const response = await updateGasStationInstance.execute(data);
+                const updateGasStationResult = response.data.data;
+                console.log(updateGasStationResult)
+                commit("SET_CURRENT_GAS_STATION", updateGasStationResult);
 
             } catch (error){
                 console.log(error);

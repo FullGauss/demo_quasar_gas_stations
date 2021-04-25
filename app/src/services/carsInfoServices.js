@@ -13,5 +13,27 @@ const getCarInfo = () => {
         }
     };
 };
+const createCarInfo = () => {
+    const instance = api();
 
-export { getCarsInfo, getCarInfo };
+    return {
+        instance,
+
+        execute: function(data) {
+            return this.instance.post('/cars_info', data);
+        }
+    };
+};
+const updateCarInfo = () => {
+    const instance = api();
+
+    return {
+        instance,
+
+        execute: function(data) {
+            return this.instance.put('/cars_info', data);
+        }
+    };
+};
+
+export { getCarsInfo, getCarInfo, createCarInfo, updateCarInfo };

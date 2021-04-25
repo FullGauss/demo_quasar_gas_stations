@@ -4,15 +4,15 @@
             <div class="text-h5">Добавить новый автомобиль</div>
         </div>
         <CarInfoForm 
-            :carInfoData="newCarInfo" 
-            @buttonEventHandler="createCarInfo"
+            :carInfoData="newCarInfo"
+            @submitEventHandler="createCarInfo"
             crudName="Создать"
         />
     </div>
 </template>
 
 <script>
-// import { mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 import CarInfoForm from "@/components/CarInfoForm";
 
@@ -33,8 +33,26 @@ export default {
        
     },
     methods: {
+        ...mapActions({
+            createCarInfoInDb: "CARS_INFO_MODULE/CREATE_CAR_INFO",
+        }),
         createCarInfo(){
-            console.log(this.newCarInfo)
+            try{
+                this.createCarInfoInDb(this.newCarInfo)
+                this.$q.notify({
+                    color: 'green-4',
+                    textColor: 'white',
+                    icon: 'cloud_done',
+                    message: 'Сохранено'
+                })
+            } catch(error){
+                this.$q.notify({
+                    color: 'red-5',
+                    textColor: 'white',
+                    icon: 'warning',
+                    message: 'Ошибка'
+                })
+            }
         }
     },
     mounted() {

@@ -5,7 +5,7 @@
         </div>
         <CarInfoForm v-if="currentStateCarInfo" 
             :carInfoData="currentStateCarInfo" 
-            @buttonEventHandler="updateCarInfo"
+            @submitEventHandler="updateCarInfo"
             crudName="Сохранить"
             />
         <q-inner-loading :showing="visible">
@@ -40,6 +40,7 @@ export default {
     methods: {
         ...mapActions({
             getCarInfoById: "CARS_INFO_MODULE/GET_CAR_INFO_BY_ID",
+            updateCarInfoInDb: "CARS_INFO_MODULE/UPDATE_CAR_INFO",
         }),
         async loadCarInfoById(id){
             this.visible = true;
@@ -51,7 +52,23 @@ export default {
             }
         },
         updateCarInfo(){
-            console.log(this.currentStateCarInfo)
+            console.log(this.currentStateCarInfo);
+            try{
+                this.updateCarInfoInDb(this.currentStateCarInfo);
+                this.$q.notify({
+                    color: 'green-4',
+                    textColor: 'white',
+                    icon: 'cloud_done',
+                    message: 'Сохранено'
+                })
+            } catch(error){
+                this.$q.notify({
+                    color: 'red-5',
+                    textColor: 'white',
+                    icon: 'warning',
+                    message: 'Ошибка'
+                })
+            }
         }
     },
     mounted() {

@@ -14,4 +14,28 @@ const getGasStation = () => {
     };
 };
 
-export { getGasStations, getGasStation };
+const createGasStation = () => {
+    const instance = api();
+
+    return {
+        instance,
+
+        execute: function(data) {
+            return this.instance.post('/gas_stations', data);
+        }
+    };
+};
+
+const updateGasStation = () => {
+    const instance = api();
+
+    return {
+        instance,
+
+        execute: function(data) {
+            return this.instance.put('/gas_stations', data);
+        }
+    };
+};
+
+export { getGasStations, getGasStation, createGasStation, updateGasStation };

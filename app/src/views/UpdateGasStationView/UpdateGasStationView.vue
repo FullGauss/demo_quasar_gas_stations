@@ -5,7 +5,7 @@
         </div>
         <GasStationForm v-if="currentStateGasStation" 
             :gasStationData="currentStateGasStation" 
-            @buttonEventHandler="updateGasStationInfo"
+            @submitEventHandler="updateGasStationInfo"
             crudName="Сохранить"
             />
         <q-inner-loading :showing="visible">
@@ -40,6 +40,7 @@ export default {
     methods: {
         ...mapActions({
             getGasStationById: "GAS_STATIONS_MODULE/GET_GAS_STATION_BY_ID",
+            updateGasStationInDb: "GAS_STATIONS_MODULE/UPDATE_GAS_STATION",
         }),
         async loadGasStationById(id){
             this.visible = true;
@@ -51,7 +52,23 @@ export default {
             }
         },
         updateGasStationInfo(){
-            console.log(this.currentStateGasStation)
+            console.log(this.currentStateGasStation);
+            try{
+                this.updateGasStationInDb(this.currentStateGasStation);
+                this.$q.notify({
+                    color: 'green-4',
+                    textColor: 'white',
+                    icon: 'cloud_done',
+                    message: 'Сохранено'
+                })
+            } catch(error){
+                this.$q.notify({
+                    color: 'red-5',
+                    textColor: 'white',
+                    icon: 'warning',
+                    message: 'Ошибка'
+                })
+            }
         }
     },
     mounted() {
